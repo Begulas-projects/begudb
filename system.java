@@ -29,4 +29,7 @@ public class system {
         }
         log("\n");
     }
+    public static void ln(String msg){
+        log(msg + "\n");
+    }
 }
