@@ -1,5 +1,5 @@
 package begudb;
-
+import java.util.Scanner;
 import java.io.IOException;
 import java.util.Random;
 
@@ -31,5 +31,11 @@ public class system {
     }
     public static void ln(String msg){
         log(msg + "\n");
+    }
+    public static String input(){
+        Scanner sc = new Scanner(System.in);
+        String inp = sc.nextLine();
+        sc.close();
+        return inp;
     }
 }
