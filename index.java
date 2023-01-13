@@ -1,5 +1,8 @@
 import java.io.IOException;
 
+import src.db;
+import src.system;
+
 class index {
     public static void main(String[] args) throws IOException {
         db.create();
