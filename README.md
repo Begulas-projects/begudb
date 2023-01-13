@@ -24,5 +24,5 @@ system.printArrayln(database[INDEX]);
 - ADD to the database: `db.add(ARRAY);`
 - automatically setup the database: `db.create();`
 # IMPORTANT!
-## **The database can only have up to 400 items, you can change that in the system.java file at the declaration of `db.inject()`!**
+## **The database can only have up to 100 items, you can change that in the Config.java file**
 More soon!
