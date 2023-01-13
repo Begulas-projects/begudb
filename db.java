@@ -69,4 +69,31 @@ public class db {
             e.printStackTrace();
         }
     }
+    public static void add(String[] arr) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        FileReader myReader = new FileReader("database.txt");
+        BufferedReader breader = new BufferedReader(myReader);
+        String line;
+        while ((line = breader.readLine()) != null) {
+            sb.append(line).append("\n");
+        }
+        breader.close();
+        myReader.close();
+        sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
+        sb.append(", { ");
+        for(int item = 0;item < arr.length;item++){
+            if(item != arr.length - 1){
+                sb.append("\"" + arr[item] + "\"" + ", ");
+            } else {
+                sb.append("\"" + arr[item] + "\"" + "} }");
+            }
+        }
+
+        FileWriter myWriter = new FileWriter("database.txt", false);
+        BufferedWriter myBuffer = new BufferedWriter(myWriter);
+        myBuffer.write(sb.toString());
+        myBuffer.close();
+    }
 }
