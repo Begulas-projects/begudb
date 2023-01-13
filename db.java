@@ -1,0 +1,43 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class db {
+    public static String[][] injectdb() throws IOException{
+        String[][] arr = new String[400][400];
+        FileReader myReader = new FileReader("database.txt");
+        BufferedReader myBuffer = new BufferedReader(myReader);
+        try {
+            String line = myBuffer.readLine();
+            String[] elements = line.replace("{", "").replace("}", "").split(",");
+            for (int i = 0; i < elements.length; i++) {
+                if(i < arr.length){
+                    arr[i] = elements[i].trim().split("sssssssssssssssss");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        myBuffer.close();
+        return arr;
+    }
+    public static int find(String item) throws IOException {
+        String newItem = "\"" + item + "\"";
+        String[][] array = injectdb();
+        int ret = 0;
+        boolean returned = false;
+        for(int x = 0;x < array.length;x ++){
+            if((array[x][0] != null) && !(array[x][0].equals(newItem))){
+            }else if(array[x][0].equals(newItem)){
+                ret = x;
+                returned = true;
+                break;
+            }
+        }
+        if(returned){
+            return ret;
+        } else {
+            return 404_404_404;
+        }
+    }
+}
