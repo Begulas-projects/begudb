@@ -8,7 +8,7 @@ import java.io.File;
 
 public class db {
     public static String[][] inject() throws IOException{
-        String[][] arr = new String[400][400]; // Change these numbers to get more items in the database
+        String[][] arr = new String[Config.databaseItemAmount()][Config.databaseItemAmount()];
         FileReader myReader = new FileReader("database.txt");
         BufferedReader myBuffer = new BufferedReader(myReader);
         try {
