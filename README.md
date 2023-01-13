@@ -1,5 +1,11 @@
 # Java database
 This is a open-source project for creating databases in java using only txt files, it's free to use without credits!
+## Setup
+- run `git clone https://github.com/Begulas-projects/begudb` in the terminal
+- import `java.io.IOException`
+- make main throw IOException: `public static void main(String[] args) throws IOException{`
+- and you're done!
+
 ### What these functions got
 - find system: `db.find(ITEM);`
   - this returns 404_404_404 when the item is not found
