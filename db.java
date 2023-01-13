@@ -6,7 +6,7 @@ import java.io.BufferedWriter;
 
 public class db {
     public static String[][] inject() throws IOException{
-        String[][] arr = new String[400][400];
+        String[][] arr = new String[400][400]; // Change these numbers to get more items in the database
         FileReader myReader = new FileReader("database.txt");
         BufferedReader myBuffer = new BufferedReader(myReader);
         try {
@@ -14,7 +14,7 @@ public class db {
             String[] elements = line.replace("{", "").replace("}", "").split(",");
             for (int i = 0; i < elements.length; i++) {
                 if(i < arr.length){
-                    arr[i] = elements[i].trim().split("sssssssssssssssss");
+                    arr[i] = elements[i].trim().split("thisisaplaceholderdonotremovemeremovingthiswillresultoabugandremovesomelettersinthedatabase");
                 }
             }
         } catch (IOException e) {
@@ -47,7 +47,7 @@ public class db {
         try {
             FileWriter myWriter = new FileWriter("database.txt", false);
             BufferedWriter myBuffer = new BufferedWriter(myWriter);
-            myBuffer.write("{ ");
+            myBuffer.write("{ "); // beginning, --> {...
             for (int i = 0; i < arr.length; i++) {
                 myBuffer.write("{ \"");
                 for (int j = 0; j < arr[i].length; j++) {
