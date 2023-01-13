@@ -11,7 +11,7 @@ system.printArrayln(database[INDEX]);
   - you can also read the database by finding the item:
   ```java
   String[][] database = system.injectdb();
-  system.printArrayln(array[find(ITEM HERE)]);
+  system.printArrayln(array[system.find(ITEM HERE)]);
   ```
 - clear console (windows only): `system.clear();`
 - `System.out.print` in short: `system.log(MSG);`
