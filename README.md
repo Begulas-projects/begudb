@@ -19,7 +19,8 @@ system.printArrayln(database[INDEX]);
 - print arrays:
   - new line after printing array: `system.printArrayln(ARRAY);`
   - stay on line: `system.printArray(ARRAY);`
-
+- write to the database: `db.write(2DIMENSIONAL ARRAY);`
+  - this clears the already existing database!
 # IMPORTANT!
 ## **The database can only have up to 400 items, you can change that in the system.java file at the declaration of `db.inject()`!**
 More soon!
