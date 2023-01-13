@@ -24,12 +24,13 @@ public class db {
         return arr;
     }
     public static int find(String item) throws IOException {
-        String newItem = "" + item + "";
+        String newItem = "\"" + item + "\"";
         String[][] array = inject();
         int ret = 0;
         boolean returned = false;
         for(int x = 0;x < array.length;x ++){
-            if((array[x][0] != null) && !(array[x][0].equals(newItem))){
+            if(array[x][0] == null){
+                continue;
             }else if(array[x][0].equals(newItem)){
                 ret = x;
                 returned = true;
@@ -48,7 +49,7 @@ public class db {
             BufferedWriter myBuffer = new BufferedWriter(myWriter);
             myBuffer.write("{ ");
             for (int i = 0; i < arr.length; i++) {
-                myBuffer.write("{ ");
+                myBuffer.write("{ \"");
                 for (int j = 0; j < arr[i].length; j++) {
                     if(arr[i][j] != null && !arr[i][j].isEmpty()){
                         myBuffer.write(arr[i][j]);
@@ -56,13 +57,13 @@ public class db {
                         myBuffer.write(" ");
                     }
                     if(j != arr[i].length -1)
-                        myBuffer.write(", ");
+                        myBuffer.write("\", \"");
                 }
                 if(i != arr[i].length - 1){
-                    myBuffer.write(" }, ");
+                    myBuffer.write("\" }, ");
                 }
             }
-            myBuffer.write(" } }");
+            myBuffer.write("\" } }");
             myBuffer.close();
         } catch (IOException e) {
             e.printStackTrace();
