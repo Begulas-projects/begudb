@@ -1,1 +1,1 @@
-{{"1", "2"}, {"this is a text", "s"}, {"null", "null"}}
+{{"1", "2"}, {"this is a text", "s"}}
