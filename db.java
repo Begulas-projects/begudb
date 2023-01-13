@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
+import java.io.File;
 
 public class db {
     public static String[][] inject() throws IOException{
@@ -95,5 +96,11 @@ public class db {
         BufferedWriter myBuffer = new BufferedWriter(myWriter);
         myBuffer.write(sb.toString());
         myBuffer.close();
+    }
+    public static void create() throws IOException {
+        File file = new File("database.txt");
+        file.createNewFile();
+        String[][] array = { { "ITEM", "ITEM"}, { "ITEM", "ITEM"} };
+        write(array);
     }
 }

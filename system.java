@@ -8,7 +8,10 @@ public class system {
         return arr[randomIndex];
     }
     public static void clear() throws InterruptedException, IOException{
-        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        try{
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } finally {
+        }
     }
     public static void log(String msg){
         System.out.print(msg);

@@ -22,6 +22,7 @@ system.printArrayln(database[INDEX]);
 - write to the database: `db.write(2DIMENSIONAL ARRAY);`
   - this clears the already existing database!
 - ADD to the database: `db.add(ARRAY);`
+- automatically setup the database: `db.create();`
 # IMPORTANT!
 ## **The database can only have up to 400 items, you can change that in the system.java file at the declaration of `db.inject()`!**
 More soon!
