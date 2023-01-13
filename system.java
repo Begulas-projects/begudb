@@ -27,7 +27,7 @@ public class system {
         log("\n");
     }
     public static String[][] injectdb() throws IOException{
-        String[][] arr = new String[10][10];
+        String[][] arr = new String[403][403];
         FileReader myReader = new FileReader("database.txt");
         BufferedReader myBuffer = new BufferedReader(myReader);
         try {
