@@ -2,7 +2,7 @@
 This is a open-source project for creating databases in java using only txt files, it's free to use without credits!
 ### What these functions got
 - find system: `system.find(ITEM);`
-  - this returns 404 when the item is not found
+  - this returns 404_404_404 when the item is not found
 - read database:
 ```java
 String[][] database = system.injectdb();
@@ -20,4 +20,6 @@ system.printArrayln(database[INDEX]);
   - new line after printing array: `system.printArrayln(ARRAY);`
   - stay on line: `system.printArray(ARRAY);`
 
+# IMPORTANT!
+## **The database can only have up to 400 items, you can change that in the system.java file at the declaration of `system.injectdb()`!**
 More soon!
