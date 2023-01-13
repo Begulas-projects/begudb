@@ -1,7 +1,7 @@
 import java.io.IOException;
 
-import src.db;
-import src.system;
+import begudb.db;
+import begudb.system;
 
 class index {
     public static void main(String[] args) throws IOException {
