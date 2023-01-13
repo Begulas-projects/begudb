@@ -3,6 +3,7 @@ This is a open-source project for creating databases in java using only txt file
 ## Setup
 - run `git clone https://github.com/Begulas-projects/begudb` in the terminal
 - import `java.io.IOException`
+- import `begudb.db` for database, `begudb.system` for system commands
 - make main throw IOException: `public static void main(String[] args) throws IOException{`
 - and you're done!
 
