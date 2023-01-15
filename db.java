@@ -62,7 +62,7 @@ public class db {
                     if(j != arr[i].length -1)
                         myBuffer.write("\", \"");
                 }
-                if(i != arr[i].length - 1){
+                if(i != arr[i].length){
                     myBuffer.write("\" }, ");
                 }
             }
