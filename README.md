@@ -1,5 +1,7 @@
 # Java database
 This is a open-source project for creating databases in java using only txt files, it's free to use without credits!
+# IMPORTANT!
+## **The database can only have up to 100 items, you can change that in the Config.java file**
 ## Setup
 - run `git clone https://github.com/Begulas-projects/begudb` in the terminal
 - import `java.io.IOException`
@@ -30,6 +32,5 @@ system.printArrayln(database[INDEX]);
   - this clears the already existing database!
 - ADD to the database: `db.add(ARRAY);`
 - automatically setup the database: `db.create();`
-# IMPORTANT!
-## **The database can only have up to 100 items, you can change that in the Config.java file**
+- remove values: `db.remove(VALUE);`
 More soon!
