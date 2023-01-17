@@ -32,5 +32,5 @@ system.printArrayln(database[INDEX]);
   - this clears the already existing database!
 - ADD to the database: `db.add(ARRAY);`
 - automatically setup the database: `db.create();`
-- remove values: `db.remove(VALUE);`
+- remove values: `db.remove(VALUE);`<br>
 More soon!
