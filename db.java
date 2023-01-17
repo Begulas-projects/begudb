@@ -127,9 +127,9 @@ public class db {
         }
         write(newArr);
     }
-    ublic static boolean test() throws IOException {
+    public static boolean test() throws IOException {
         String[] database = inject();
-        boolean success = find(database[0]) < 400000;
+        boolean success = find(database[0].substring(1,database[0].length() - 1)) < 400000;
         boolean passed;
         if(success){
             System.out.println("\033[32mTest one passed");
@@ -149,9 +149,9 @@ public class db {
         try {
             remove("testing");
             remove("testing");
-            System.out.println("\033[32mTest three passed");
+            System.out.println("\033[32mTest three passed\033[0m");
         } catch(Exception e){
-            System.out.println("\033[31mTest three failed");
+            System.out.println("\033[31mTest three failed\033[0m");
             passed = false;
         }
         write(database);
