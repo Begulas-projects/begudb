@@ -155,6 +155,6 @@ public class db {
             passed = false;
         }
         write(database);
-        return(passed);
+        return passed;
     }
 }
