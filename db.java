@@ -8,8 +8,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 
 public class db {
-    public static String[][] inject() throws IOException{
-        String[][] arr = new String[Config.databaseItemAmount()][Config.databaseItemAmount()];
+    public static String[] inject() throws IOException{
+        String[] arr = new String[Config.databaseItemAmount()];
         FileReader myReader = new FileReader("database.txt");
         BufferedReader myBuffer = new BufferedReader(myReader);
         try {
@@ -17,7 +17,7 @@ public class db {
             String[] elements = line.replace("{", "").replace("}", "").split(",");
             for (int i = 0; i < elements.length; i++) {
                 if(i < arr.length){
-                    arr[i] = elements[i].trim().split("thisisaplaceholderdonotremovemeremovingthiswillresultoabugandremovesomelettersinthedatabase");
+                    arr[i] = elements[i].trim();
                 }
             }
         } catch (IOException e) {
@@ -28,13 +28,13 @@ public class db {
     }
     public static int find(String item) throws IOException {
         String newItem = "\"" + item + "\"";
-        String[][] array = inject();
+        String[] array = inject();
         int ret = 0;
         boolean returned = false;
         for(int x = 0;x < array.length;x ++){
-            if(array[x][0] == null){
+            if(array[x] == null){
                 continue;
-            }else if(array[x][0].equals(newItem)){
+            }else if(array[x].equals(newItem)){
                 ret = x;
                 returned = true;
                 break;
@@ -46,30 +46,29 @@ public class db {
             return 404_404_404;
         }
     }
-    public static void write(String[][] arr) {
+    public static String write(String[] arr) {
         try {
             FileWriter myWriter = new FileWriter("database.txt", false);
             BufferedWriter myBuffer = new BufferedWriter(myWriter);
-            myBuffer.write("{ "); // beginning, --> {...
-            for (int i = 0; i < arr.length; i++) {
-                myBuffer.write("{ \"");
-                for (int j = 0; j < arr[i].length; j++) {
-                    if(arr[i][j] != null && !arr[i][j].isEmpty()){
-                        myBuffer.write(arr[i][j]);
-                    } else {
-                        myBuffer.write(" ");
-                    }
-                    if(j != arr[i].length -1)
+            myBuffer.write("{ \""); // beginning, --> {...
+            for(int item = 0;item < arr.length;item++){
+                if(arr[item] != null){
+                    myBuffer.write(arr[item].replaceAll("\"",""));
+                    if(item != arr.length - 1){
                         myBuffer.write("\", \"");
-                }
-                if(i != arr[i].length){
-                    myBuffer.write("\" }, ");
+                    }
                 }
             }
-            myBuffer.write("\" } }");
+            myBuffer.write("\" }");
             myBuffer.close();
+            FileReader myReader = new FileReader("database.txt");
+            BufferedReader breader = new BufferedReader(myReader);
+            String newDb = breader.readLine();
+            breader.close();
+            return newDb;
         } catch (IOException e) {
             e.printStackTrace();
+            return "Failed";
         }
     }
     public static void add(String[] arr) throws IOException {
@@ -102,7 +101,67 @@ public class db {
     public static void create() throws IOException {
         File file = new File("database.txt");
         file.createNewFile();
-        String[][] array = { { "ITEM", "ITEM"}, { "ITEM", "ITEM"} };
+        String[] array = { "ITEM", "ITEM", "ITEM", "ITEM" };
         write(array);
+    }
+    public static void remove(String value) throws IOException {
+        String[] arr = inject();
+        int index = find(value);
+        int len = 0;
+        for (int k = 0; k < arr.length; k++) {
+            if(k != index){
+                if(arr[k] != null){
+                    len++;
+                }
+            }
+        }
+        String[] newArr = new String[len];
+        int j = 0;
+        for (int k = 0; k < arr.length; k++) {
+            if(k != index){
+                if(arr[k] != null){
+                    newArr[j] = arr[k];
+                    j++;
+                }
+            }
+        }
+        write(newArr);
+    }
+    public static void test(){
+        String[] database = inject();
+        boolean success = find(database[0]) < 400000;
+        boolean passed;
+        if(success){
+            System.out.println("\033[32mTest one passed");
+            passed = true;
+        } else {
+            System.out.println("\033[31mTest one failed");
+            passed = false;
+            break;
+        }
+        try {
+            String[] array = { "testing", "testing" };
+            add(array);
+            System.out.println("\033[32mTest two passed");
+            if(passed){
+                passed = true;
+            } else {
+                break;
+            }
+        } catch(Exception e){
+            passed = false;
+            System.out.println("\033[31mTest two failed");
+            break;
+        }
+        try {
+            remove("testing");
+            remove("testing");
+            System.out.println("\033[32mTest three passed");
+        } catch(Exception e){
+            System.out.println("\033[31mTest three failed");
+            passed = false;
+            break;
+        }
+        write(database);
     }
 }
